@@ -99,7 +99,7 @@ if run:
 
         st.session_state["result"] = result
 
-        st.subheader("📊 Matching Results")
+        st.subheader("Matching Results")
         st.dataframe(result)
 
         st.download_button(
