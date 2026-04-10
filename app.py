@@ -107,7 +107,6 @@ if run:
             result.to_csv(index=False),
             file_name="matched_results.csv"
         )
-
 # -----------------------------
 # SEND EMAIL
 # -----------------------------
@@ -119,7 +118,8 @@ if send:
     else:
         result = st.session_state["result"]
         top_candidates = result[result["Match %"] > threshold]
-        
+
+        # 🏆 Show Top Candidate
         if not result.empty:
             top_candidate = result.iloc[0]
             st.success(f"🏆 Top Candidate: {top_candidate['Name']} | Match: {round(top_candidate['Match %'],2)}%")
@@ -144,14 +144,15 @@ You are shortlisted for {company_name}.
 Regards,
 Placement Team
 """
-top_candidate = result.iloc[0]
 
+                # CORRECT INDENT STARTS HERE
                 msg = MIMEText(body)
                 msg['Subject'] = f"Job Opportunity - {company_name}"
                 msg['From'] = EMAIL
                 msg['To'] = row["Email"]
 
                 server.send_message(msg)
+                # CORRECT INDENT ENDS HERE
 
                 log_data.append([
                     row["Name"],
