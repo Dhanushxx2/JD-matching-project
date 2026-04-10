@@ -119,6 +119,10 @@ if send:
     else:
         result = st.session_state["result"]
         top_candidates = result[result["Match %"] > threshold]
+        
+        if not result.empty:
+            top_candidate = result.iloc[0]
+            st.success(f"🏆 Top Candidate: {top_candidate['Name']} | Match: {round(top_candidate['Match %'],2)}%")
 
         if top_candidates.empty:
             st.warning("No candidates above threshold")
@@ -141,8 +145,6 @@ Regards,
 Placement Team
 """
 top_candidate = result.iloc[0]
-
-st.success(f"🏆 Top Candidate: {top_candidate['Name']} | Match: {round(top_candidate['Match %'],2)}%")
 
                 msg = MIMEText(body)
                 msg['Subject'] = f"Job Opportunity - {company_name}"
