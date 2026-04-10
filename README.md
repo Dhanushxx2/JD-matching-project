@@ -16,5 +16,5 @@ This project uses NLP (TF-IDF + Cosine Similarity) to match job descriptions wit
 - Pandas
 - Scikit-learn
 
-## 🌐 Live App
-Add your Streamlit link here
+## Live App
+link here click https://jd-matching-system.streamlit.app/ 
