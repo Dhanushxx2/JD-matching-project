@@ -18,3 +18,6 @@ This project uses NLP (TF-IDF + Cosine Similarity) to match job descriptions wit
 
 ## Live App
 link here click https://jd-matching-system.streamlit.app/ 
+
+## Developed By
+Dhanush S
