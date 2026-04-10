@@ -1,16 +1,16 @@
-# 🤖 AI-Based JD Matching System
+# AI-Based JD Matching System
 
-## 📌 Overview
+## Overview
 This project uses NLP (TF-IDF + Cosine Similarity) to match job descriptions with student profiles.
 
-## 🚀 Features
+## Features
 - JD-based candidate matching
 - Match % scoring
 - Email automation
 - Excel upload support
 - Cloud deployment (Streamlit)
 
-## 🛠 Tech Stack
+## Tech Stack
 - Python
 - Streamlit
 - Pandas
