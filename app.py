@@ -15,8 +15,9 @@ EMAIL = "dhanushsanjeevi75300@gmail.com"
 APP_PASSWORD = "xucb ztsm phli xxxw"
 
 st.set_page_config(page_title="JD Matching System", layout="wide")
+st.markdown("<h1 style='text-align: center; color: #4CAF50;'>🤖 Infomates AI JD Matching System</h1>", unsafe_allow_html=True)
+st.markdown("---")
 
-st.title("🤖 JD Matching Automation System")
 
 # -----------------------------
 # FILE UPLOAD (TOP)
@@ -139,6 +140,9 @@ You are shortlisted for {company_name}.
 Regards,
 Placement Team
 """
+top_candidate = result.iloc[0]
+
+st.success(f"🏆 Top Candidate: {top_candidate['Name']} | Match: {round(top_candidate['Match %'],2)}%")
 
                 msg = MIMEText(body)
                 msg['Subject'] = f"Job Opportunity - {company_name}"
