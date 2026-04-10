@@ -158,7 +158,6 @@ Placement Team
                     row["Name"],
                     row["Email"],
                     company_name,
-                    row["Preferred Job Location"],
                     datetime.now()
                 ])
 
@@ -177,54 +176,3 @@ Placement Team
 
             st.success("✅ Emails Sent & Report Updated")
 
-# -----------------------------
-# DASHBOARD (ADD THIS BELOW)
-# -----------------------------
-
-st.markdown("---")
-st.subheader("Dashboard")
-
-if os.path.exists("report_log.xlsx"):
-
-    log_df = pd.read_excel("report_log.xlsx")
-
-    log_df["Date"] = pd.to_datetime(log_df["Date"])
-
-    # ------------------ FILTERS ------------------
-    st.markdown("### 🔍 Filters")
-
-    col1, col2 = st.columns(2)
-
-    company_filter = col1.selectbox(
-        "Filter by Company",
-        ["All"] + list(log_df["Company"].dropna().unique())
-    )
-
-    location_filter2 = col2.selectbox(
-        "Filter by Location",
-        ["All"] + list(log_df["Location"].dropna().unique())
-    )
-
-    if company_filter != "All":
-        log_df = log_df[log_df["Company"] == company_filter]
-
-    if location_filter2 != "All":
-        log_df = log_df[log_df["Location"] == location_filter2]
-
-    # ------------------ DAILY ------------------
-    st.write("📅 Daily Activity")
-    daily = log_df.groupby(log_df["Date"].dt.date).size()
-    st.line_chart(daily)
-
-    # ------------------ WEEKLY ------------------
-    st.write("📊 Weekly Activity")
-    weekly = log_df.groupby(log_df["Date"].dt.to_period("W")).size()
-    st.bar_chart(weekly)
-
-    # ------------------ MONTHLY ------------------
-    st.write("📈 Monthly Activity")
-    monthly = log_df.groupby(log_df["Date"].dt.to_period("M")).size()
-    st.bar_chart(monthly)
-
-else:
-    st.info("No report data available yet")
